@@ -12,7 +12,7 @@
 
     <dependencies>
 
-        <!-- 微服务是web工程，所以必须依赖web       -->
+        <!-- 微服务是web工程， 所以必须依赖web       -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
