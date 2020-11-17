@@ -1,4 +1,4 @@
-package com.go.entity;
+package com.go.route;
 
 import java.util.Date;
 import java.io.Serializable;
@@ -16,6 +16,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class RSku implements Serializable {
+
+    public static void main(String[] args) {
+        System.out.println("pkkkkkkk");
+    }
 
     private static final long serialVersionUID = 1L;
 

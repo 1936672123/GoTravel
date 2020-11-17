@@ -1,4 +1,4 @@
-package com.go.entity;
+package com.go.route;
 
 import java.util.Date;
 import java.io.Serializable;
