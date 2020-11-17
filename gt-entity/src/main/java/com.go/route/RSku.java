@@ -1,9 +1,12 @@
 package com.go.route;
 
-import java.util.Date;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -17,36 +20,33 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class RSku implements Serializable {
 
-    public static void main(String[] args) {
-        System.out.println("pkkkkkkk");
-    }
-
     private static final long serialVersionUID = 1L;
 
     /**
-     *  套餐ID
+     * 路线套餐ID
      */
+    @TableId(value = "sku_id", type = IdType.AUTO)
     private Integer skuId;
 
     /**
      * 出行时间
      */
-    private Date startTime;
+    private Date goTime;
 
     /**
-     * 套餐名称
+     * 路线套餐名称
      */
     private String skuName;
 
     /**
-     * 套餐价格
+     * 路线套餐价格
      */
     private Double skuPrice;
 
     /**
      * 出行人数
      */
-    private Integer menberNum;
+    private Integer memberNum;
 
     /**
      * 线路主表ID

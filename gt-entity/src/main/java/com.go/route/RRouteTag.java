@@ -1,8 +1,11 @@
 package com.go.route;
 
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -18,10 +21,11 @@ public class RRouteTag implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     *  路线ID
+     * 路线ID
      */
     private Integer routeId;
 

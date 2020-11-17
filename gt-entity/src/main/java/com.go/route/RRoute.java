@@ -1,9 +1,12 @@
 package com.go.route;
 
-import java.util.Date;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -22,6 +25,7 @@ public class RRoute implements Serializable {
     /**
      * 线路ID
      */
+    @TableId(value = "route_id", type = IdType.AUTO)
     private Integer routeId;
 
     /**
@@ -30,7 +34,7 @@ public class RRoute implements Serializable {
     private String routeTitle;
 
     /**
-     *  线路描述
+     * 线路描述
      */
     private String routeDesc;
 
@@ -45,7 +49,7 @@ public class RRoute implements Serializable {
     private String routePic2;
 
     /**
-     *  图片3
+     * 图片3
      */
     private String routePic3;
 
