@@ -34,6 +34,7 @@
         </dependency>
 
 
+
         <!--  nacos注册中心  -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
