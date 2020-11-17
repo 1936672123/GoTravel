@@ -1,5 +1,6 @@
 package com.go.user;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,6 +23,7 @@ public class UModule implements Serializable {
     /**
      * 权限编码id
      */
+    @TableId
     private String moduleId;
 
     /**

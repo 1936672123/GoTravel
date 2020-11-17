@@ -1,5 +1,6 @@
-package com.go.user;
+package com.go.other;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,25 +17,20 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class URole implements Serializable {
+public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 角色ID
+     * 标签ID
      */
-    @TableId
-    private String roleId;
+    @TableId(value = "tag_id", type = IdType.AUTO)
+    private Integer tagId;
 
     /**
-     * 角色名称
+     * 标签名称
      */
-    private String roleName;
-
-    /**
-     * 角色描述
-     */
-    private String roleDesc;
+    private String tagName;
 
 
 }
