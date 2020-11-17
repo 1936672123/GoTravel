@@ -88,5 +88,10 @@ public class RRoute implements Serializable {
      */
     private Date createTime;
 
+    /**
+     * 路线排序分数
+     */
+    private Integer routeScore;
+
 
 }
