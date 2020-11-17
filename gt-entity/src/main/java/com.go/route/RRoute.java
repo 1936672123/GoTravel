@@ -30,7 +30,7 @@ public class RRoute implements Serializable {
     private String routeTitle;
 
     /**
-     * 线路描述
+     *  线路描述
      */
     private String routeDesc;
 
@@ -45,7 +45,7 @@ public class RRoute implements Serializable {
     private String routePic2;
 
     /**
-     * 图片3
+     *  图片3
      */
     private String routePic3;
 

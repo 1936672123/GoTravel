@@ -24,7 +24,7 @@ public class RSku implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 套餐ID
+     *  套餐ID
      */
     private Integer skuId;
 

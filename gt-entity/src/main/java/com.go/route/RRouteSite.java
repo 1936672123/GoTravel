@@ -21,7 +21,7 @@ public class RRouteSite implements Serializable {
     private Integer id;
 
     /**
-     * 路线ID
+     *  路线ID
      */
     private Integer siteId;
 

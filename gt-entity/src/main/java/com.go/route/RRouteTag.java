@@ -21,7 +21,7 @@ public class RRouteTag implements Serializable {
     private Integer id;
 
     /**
-     * 路线ID
+     *  路线ID
      */
     private Integer routeId;
 
