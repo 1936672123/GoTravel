@@ -37,5 +37,10 @@ public class SSite implements Serializable {
      */
     private String siteDesc;
 
+    /**
+     * 人员id
+     */
+    private Integer userId;
+
 
 }

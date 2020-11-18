@@ -1,7 +1,7 @@
 package com.go.scenery.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.go.scenery.entity.SScenery;
+import com.go.site.SScenery;
 
 /**
  * <p>

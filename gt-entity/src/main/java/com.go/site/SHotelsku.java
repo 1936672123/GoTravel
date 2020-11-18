@@ -53,4 +53,10 @@ public class SHotelsku implements Serializable {
     private Double twoPrice;
 
 
+    /**
+     * 酒店id
+     */
+    private Integer hotelId;
+
+
 }

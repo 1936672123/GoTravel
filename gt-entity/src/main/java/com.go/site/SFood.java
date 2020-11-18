@@ -47,5 +47,10 @@ public class SFood implements Serializable {
      */
     private Integer siteId;
 
+    /**
+     * 人员id
+     */
+    private Integer userId;
+
 
 }

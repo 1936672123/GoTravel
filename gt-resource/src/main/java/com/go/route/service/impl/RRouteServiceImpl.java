@@ -2,6 +2,7 @@ package com.go.route.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.go.route.RRoute;
+import com.go.route.mapper.RRouteMapper;
 import com.go.route.service.IRRouteService;
 import org.springframework.stereotype.Service;
 

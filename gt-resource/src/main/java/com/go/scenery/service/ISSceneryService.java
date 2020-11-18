@@ -1,7 +1,9 @@
 package com.go.scenery.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.go.scenery.entity.SScenery;
+import com.go.site.SScenery;
+import com.go.vo.PageResult;
+import com.go.vo.Result;
 
 /**
  * <p>
@@ -12,5 +14,13 @@ import com.go.scenery.entity.SScenery;
  * @since 2020-11-17
  */
 public interface ISSceneryService extends IService<SScenery> {
+
+    //添加景点
+    Result saveScenery(SScenery sScenery);
+
+
+    //分页条件查询景点
+    PageResult<SScenery> searchSceneryByPage(Integer page,Integer limit,SScenery sScenery);
+
 
 }

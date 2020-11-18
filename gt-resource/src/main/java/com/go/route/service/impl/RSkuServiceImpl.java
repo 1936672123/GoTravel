@@ -2,6 +2,7 @@ package com.go.route.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.go.route.RSku;
+import com.go.route.mapper.RSkuMapper;
 import com.go.route.service.IRSkuService;
 import org.springframework.stereotype.Service;
 
