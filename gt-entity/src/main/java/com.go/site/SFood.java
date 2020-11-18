@@ -1,11 +1,13 @@
 package com.go.site;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -51,6 +53,11 @@ public class SFood implements Serializable {
      * 人员id
      */
     private Integer userId;
+
+    /**
+     * 图片
+     */
+    private String foodPic;
 
 
 }

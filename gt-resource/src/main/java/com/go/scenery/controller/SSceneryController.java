@@ -6,10 +6,9 @@ import com.go.site.SScenery;
 import com.go.vo.PageResult;
 import com.go.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -37,10 +36,16 @@ public class SSceneryController {
         return result;
     }
 
-    @PostMapping("/searchByPage")
+    @PostMapping("/searchSceneryByPage")
     public PageResult searchSceneryByPage(Integer page, Integer limit, @RequestBody SScenery sScenery){
         PageResult<SScenery> pageResult = isSceneryService.searchSceneryByPage(page, limit, sScenery);
         return pageResult;
+    }
+
+    @GetMapping("/findAllScenery")
+    public List<SScenery> findAllScenery(){
+        List<SScenery> allScenery = isSceneryService.findAllScenery();
+        return allScenery;
     }
 
 
