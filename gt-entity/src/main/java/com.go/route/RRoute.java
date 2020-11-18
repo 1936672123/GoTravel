@@ -64,6 +64,11 @@ public class RRoute implements Serializable {
     private Integer saleCount;
 
     /**
+     * 路线排序分数
+     */
+    private Integer routeScore;
+
+    /**
      * 游览量
      */
     private Integer viewCount;
@@ -84,14 +89,19 @@ public class RRoute implements Serializable {
     private String typeId;
 
     /**
-     * 创建时间
+     * 路线创建时间
      */
     private Date createTime;
 
     /**
-     * 路线排序分数
+     * 路线修改时间
      */
-    private Integer routeScore;
+    private Date updateTime;
+
+    /**
+     * 路线库存数
+     */
+    private Integer routeRemain;
 
 
 }
