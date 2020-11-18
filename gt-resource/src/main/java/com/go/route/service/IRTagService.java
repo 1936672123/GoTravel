@@ -1,7 +1,7 @@
 package com.go.route.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.go.other.Tag;
+import com.go.route.RTag;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.go.other.Tag;
  * </p>
  *
  * @author jobob
- * @since 2020-11-17
+ * @since 2020-11-18
  */
-public interface ITagService extends IService<Tag> {
+public interface IRTagService extends IService<RTag> {
 
 }

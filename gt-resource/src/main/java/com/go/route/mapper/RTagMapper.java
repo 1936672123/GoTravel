@@ -1,7 +1,7 @@
 package com.go.route.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.go.other.Tag;
+import com.go.route.RTag;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.go.other.Tag;
  * </p>
  *
  * @author jobob
- * @since 2020-11-17
+ * @since 2020-11-18
  */
-public interface TagMapper extends BaseMapper<Tag> {
+public interface RTagMapper extends BaseMapper<RTag> {
 
 }
