@@ -24,6 +24,16 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- 微服务是web工程， 所以必须依赖web       -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--    端点监控，监控微服务的状态    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
         <!-- 服务注册与发现  -->
         <dependency>
