@@ -45,6 +45,11 @@ public class SSite implements Serializable {
     private Integer userId;
 
     /**
+     * 顺序
+     */
+    private Integer siteOrder;
+
+    /**
      * 图片
      */
     private String sitePic;
