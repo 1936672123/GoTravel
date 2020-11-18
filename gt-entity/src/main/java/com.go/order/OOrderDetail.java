@@ -1,13 +1,11 @@
 package com.go.order;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>
@@ -15,24 +13,19 @@ import java.util.Date;
  * </p>
  *
  * @author jobob
- * @since 2020-11-17
+ * @since 2020-11-18
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class OTraveler implements Serializable {
+public class OOrderDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 订单旅客ID
+     * 订单详细id
      */
-    @TableId(value = "traveler_id", type = IdType.AUTO)
-    private Integer travelerId;
-
-    /**
-     * 订单ID
-     */
-    private String orderId;
+    @TableId("orderDetail_id")
+    private Integer orderdetailId;
 
     /**
      * 旅客姓名
@@ -43,11 +36,6 @@ public class OTraveler implements Serializable {
      * 旅客性别
      */
     private String travelerSex;
-
-    /**
-     * 出生日期
-     */
-    private Date travelerBirth;
 
     /**
      * 证件类型
@@ -64,12 +52,17 @@ public class OTraveler implements Serializable {
     /**
      * 旅客手机号
      */
-    private String traverlPhone;
+    private String travelerPhone;
 
     /**
-     * 是否设为常用旅客(0,非默认;1,默认)
+     * 常用旅客（0-不是，1-是）
      */
     private Integer defaultTraveler;
+
+    /**
+     * 订单id
+     */
+    private String orderId;
 
 
 }

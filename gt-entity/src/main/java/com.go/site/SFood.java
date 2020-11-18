@@ -42,7 +42,7 @@ public class SFood implements Serializable {
     /**
      * 美食评分
      */
-    private String foodScore;
+    private Integer foodScore;
 
     /**
      * 地点ID

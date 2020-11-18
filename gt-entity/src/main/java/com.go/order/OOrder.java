@@ -1,11 +1,13 @@
 package com.go.order;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -82,5 +84,15 @@ public class OOrder implements Serializable {
      */
     private String linkmanWx;
 
+    /**
+     * 旅客id
+     */
+    private Integer userId;
+
+    /**
+     * 订单详情
+     */
+    @TableField(exist=false)
+    private List<OOrderDetail> orderDetails;
 
 }

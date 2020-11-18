@@ -39,7 +39,7 @@ public class UModule implements Serializable {
     /**
      * 上级权限
      */
-    private Integer parentModule;
+    private String parentModule;
 
     /**
      * 是否展开（0-不展开，1-展开）

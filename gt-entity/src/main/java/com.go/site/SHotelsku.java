@@ -32,33 +32,28 @@ public class SHotelsku implements Serializable {
     /**
      * 房型(1—单人、2—双人)
      */
-    private Integer hotelType;
+    private Integer houseType;
 
     /**
      * 房间数量
      */
-    private Integer buyCount;
+    private Integer houseNum;
 
     /**
-     * 剩余房间数
+     * 套餐库存数
      */
     private Integer remainCount;
 
     /**
-     * 单人价格
+     * 价格
      */
-    private Double onePrice;
-
-    /**
-     * 双人价格
-     */
-    private Double twoPrice;
+    private Double price;
 
 
     /**
      * 酒店id
      */
-    private Integer hotelId;
+    private String hotelId;
 
 
 

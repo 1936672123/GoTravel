@@ -32,8 +32,6 @@ public class SSceneryServiceImpl extends ServiceImpl<SSceneryMapper, SScenery> i
     @Autowired
     private SSceneryMapper sSceneryMapper;
 
-    @Autowired
-    private PictureMapper pictureMapper;
 
     //添加景点
     @Override

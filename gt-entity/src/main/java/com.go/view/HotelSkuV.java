@@ -1,32 +1,29 @@
-package com.go.site;
+package com.go.view;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * <p>
- * 
+ * VIEW
  * </p>
  *
  * @author jobob
- * @since 2020-11-17
+ * @since 2020-11-18
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SHotel implements Serializable {
+@TableName("hotelSkuV")
+public class HotelSkuV implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 酒店ID
      */
-    @TableId
     private String hotelId;
 
     /**
@@ -45,20 +42,39 @@ public class SHotel implements Serializable {
     private Integer siteId;
 
     /**
-     * 人员id
+     * 酒店添加人员id
      */
     private Integer userId;
 
     /**
-     * 图片
+     * 酒店图片
      */
     private String hotelPic;
 
     /**
-     * 酒店套餐
+     * 主键ID
      */
-    @TableField(exist=false)
-    private List<SHotelsku> hotelSkus;
+    private Integer skuId;
+
+    /**
+     * 房型(1—单人、2—双人)
+     */
+    private Integer houseType;
+
+    /**
+     * 房间数量
+     */
+    private Integer houseNum;
+
+    /**
+     * 套餐库存数
+     */
+    private Integer remainCount;
+
+    /**
+     * 套餐价格
+     */
+    private Double price;
 
 
 }

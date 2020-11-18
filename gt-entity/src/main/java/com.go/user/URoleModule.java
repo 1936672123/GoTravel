@@ -30,12 +30,12 @@ public class URoleModule implements Serializable {
     /**
      * 角色ID
      */
-    private Integer roleId;
+    private String roleId;
 
     /**
      * 权限ID
      */
-    private Integer moduleId;
+    private String moduleId;
 
 
 }
