@@ -68,6 +68,22 @@ public class SHotelServiceImpl extends ServiceImpl<SHotelMapper, SHotel> impleme
         return sHotels;
     }
 
+    @Override
+    public PageResult<SHotel> getHotelBySiteId(Integer current, Integer limit, Integer siteId) {
+        Page<SHotel> page = new Page<>(current, limit);
+        QueryWrapper<SHotel> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("site_id",siteId);
+        Page<SHotel> page1 = sHotelMapper.selectPage(page, queryWrapper);
+        List<SHotel> hotels = page1.getRecords();
+        for (SHotel hotel : hotels) {
+            QueryWrapper<SHotelsku> wrapper = new QueryWrapper<>();
+            wrapper.eq("hotel_id",hotel.getHotelId());
+            List<SHotelsku> sHotelskus = sHotelskuMapper.selectList(wrapper);
+            hotel.setHotelSkus(sHotelskus);
+        }
+        return new PageResult<SHotel>(hotels, page1.getTotal());
+    }
+
     //添加酒店
     @Override
     public Result saveHotel(SHotel sHotel) {

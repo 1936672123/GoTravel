@@ -20,10 +20,13 @@ public interface ISHotelService extends IService<SHotel> {
     //添加酒店
     Result saveHotel(SHotel sHotel);
 
-    //分页查询酒店
+    //分页+条件查询酒店
     PageResult<HotelSkuV> searchHotelByPage(Integer page, Integer limit, HotelSkuV hotelSkuV);
 
     //查询所有酒店
     List<HotelSkuV> findAllHotel();
+
+    //通过site查询所有的酒店
+    PageResult<SHotel> getHotelBySiteId(Integer current,Integer limit,Integer siteId);
 
 }

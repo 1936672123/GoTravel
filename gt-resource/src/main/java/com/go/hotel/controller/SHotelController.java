@@ -45,5 +45,11 @@ public class SHotelController {
         return result;
     }
 
+    @GetMapping("/getHotelBySiteId")
+    public PageResult<SHotel> getHotelBySiteID(Integer page,Integer limit,Integer siteId){
+        PageResult<SHotel> pageResult = isHotelService.getHotelBySiteId(page, limit, siteId);
+        return pageResult;
+    }
+
 
 }

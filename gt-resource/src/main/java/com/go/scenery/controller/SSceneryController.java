@@ -25,6 +25,7 @@ public class SSceneryController {
     @Autowired
     private ISSceneryService isSceneryService;
 
+    //添加景点
     @PostMapping("/saveScenery")
     public Result saveScenery(@RequestBody SScenery sScenery){
 
@@ -36,17 +37,25 @@ public class SSceneryController {
         return result;
     }
 
+    //分页+条件查询所有的景点
     @PostMapping("/searchSceneryByPage")
     public PageResult searchSceneryByPage(Integer page, Integer limit, @RequestBody SScenery sScenery){
         PageResult<SScenery> pageResult = isSceneryService.searchSceneryByPage(page, limit, sScenery);
         return pageResult;
     }
 
+    //查询所有景点
     @GetMapping("/findAllScenery")
     public List<SScenery> findAllScenery(){
         List<SScenery> allScenery = isSceneryService.findAllScenery();
         return allScenery;
     }
 
+    //通过 地点id 查询所有的景点
+    @GetMapping("/getSceneryBySiteId")
+    public PageResult<SScenery> getSceneryBySiteId(Integer page,Integer limit,Integer siteId){
+        PageResult<SScenery> pageResult = isSceneryService.getSceneryByPage(page, limit, siteId);
+        return pageResult;
+    }
 
 }

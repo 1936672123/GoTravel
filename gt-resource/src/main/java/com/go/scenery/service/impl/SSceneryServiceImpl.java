@@ -76,4 +76,14 @@ public class SSceneryServiceImpl extends ServiceImpl<SSceneryMapper, SScenery> i
 
         return new PageResult<SScenery>(pageList.getRecords(), pageList.getTotal());
     }
+
+    //通过siteId查询所有的景点
+    @Override
+    public PageResult<SScenery> getSceneryByPage(Integer current, Integer limit, Integer siteId) {
+        Page<SScenery> sSceneryPage = new Page<>(current, limit);
+        QueryWrapper<SScenery> qw = new QueryWrapper<>();
+        qw.eq("site_id",siteId);
+        Page<SScenery> page = sSceneryMapper.selectPage(sSceneryPage, qw);
+        return new PageResult<SScenery>(page.getRecords(),page.getTotal());
+    }
 }

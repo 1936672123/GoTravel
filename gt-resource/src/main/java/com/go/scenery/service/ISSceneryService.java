@@ -24,8 +24,10 @@ public interface ISSceneryService extends IService<SScenery> {
     //查询所有景点
     List<SScenery> findAllScenery();
 
-    //分页条件查询景点
+    //分页+条件查询景点
     PageResult<SScenery> searchSceneryByPage(Integer page,Integer limit,SScenery sScenery);
 
+    //通过siteId查询所有的景点
+    PageResult<SScenery> getSceneryByPage(Integer current,Integer limit,Integer siteId);
 
 }

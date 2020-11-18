@@ -26,8 +26,8 @@ public class SHotelsku implements Serializable {
     /**
      * 主键ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "sku_id", type = IdType.AUTO)
+    private Integer skuId;
 
     /**
      * 房型(1—单人、2—双人)
