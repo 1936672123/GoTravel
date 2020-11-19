@@ -1,12 +1,15 @@
 package com.go.route;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.go.site.SSite;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -25,8 +28,8 @@ public class RRoute implements Serializable {
     /**
      * 线路ID
      */
-    @TableId(value = "route_id", type = IdType.AUTO)
-    private Integer routeId;
+    @TableId
+    private String routeId;
 
     /**
      * 线路标题
@@ -63,10 +66,6 @@ public class RRoute implements Serializable {
      */
     private Integer saleCount;
 
-    /**
-     * 路线排序分数
-     */
-    private Integer routeScore;
 
     /**
      * 游览量
@@ -81,12 +80,12 @@ public class RRoute implements Serializable {
     /**
      * 发布路线的旅游社ID
      */
-    private String travelId;
+    private Integer travelId;
 
     /**
      * 产品类型(自由行、跟团游)
      */
-    private String typeId;
+    private String routeType;
 
     /**
      * 路线创建时间
@@ -102,6 +101,31 @@ public class RRoute implements Serializable {
      * 路线库存数
      */
     private Integer routeRemain;
+
+
+    /**
+     * 路线审核信息
+     */
+    @TableField(exist=false)
+    private RRoutecheck routecheck;
+
+    /**
+     * 路线标签信息
+     */
+    @TableField(exist=false)
+    private List<RTag> rtags;
+
+    /**
+     * 路线套餐信息
+     */
+    @TableField(exist=false)
+    private List<RSku> rskus;
+
+    /**
+     * 路线地点信息
+     */
+    @TableField(exist=false)
+    private List<SSite> ssites;
 
 
 }

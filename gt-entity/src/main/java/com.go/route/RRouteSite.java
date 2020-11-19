@@ -25,14 +25,14 @@ public class RRouteSite implements Serializable {
     private Integer id;
 
     /**
-     * 路线ID
+     * 地点ID
      */
     private Integer siteId;
 
     /**
-     * 标签ID
+     * 线路ID
      */
-    private Integer routeId;
+    private String routeId;
 
 
 }

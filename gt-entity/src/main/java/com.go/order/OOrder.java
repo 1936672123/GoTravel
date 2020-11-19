@@ -90,9 +90,15 @@ public class OOrder implements Serializable {
     private Integer userId;
 
     /**
+     * 旅客人数
+     */
+    private Integer travelerNum;
+
+    /**
      * 订单详情
      */
     @TableField(exist=false)
     private List<OOrderDetail> orderDetails;
+
 
 }

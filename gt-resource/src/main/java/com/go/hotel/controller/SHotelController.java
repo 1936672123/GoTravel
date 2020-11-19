@@ -26,11 +26,34 @@ public class SHotelController {
     @Autowired
     private ISHotelService isHotelService;
 
+
+    @PostMapping("/saveHotel")
+    public Result saveHotel(@RequestBody SHotel sHotel){
+
+        //todo: 获取添加人员id
+        Integer userId=1;
+
+        sHotel.setUserId(userId);
+        Result result = isHotelService.saveHotel(sHotel);
+        return result;
+    }
+
+
+    //通过地点id获取酒店（分页）
+    @GetMapping("/getHotelBySiteId")
+    public PageResult<SHotel> getHotelBySiteID(Integer page,Integer limit,Integer siteId){
+        PageResult<SHotel> pageResult = isHotelService.getHotelBySiteId(page, limit, siteId);
+        return pageResult;
+    }
+
+
+
     @GetMapping("/findAllHotel")
     public List<HotelSkuV> findAllHotel(){
         List<HotelSkuV> allHotel = isHotelService.findAllHotel();
         return allHotel;
     }
+
 
     @PostMapping("/searchHotelByPage")
     public PageResult<HotelSkuV> searchHotelByPage(Integer page,Integer limit,@RequestBody HotelSkuV sHotel){
@@ -39,17 +62,7 @@ public class SHotelController {
     }
 
 
-    @PostMapping("/saveHotel")
-    public Result saveHotel(@RequestBody SHotel sHotel){
-        Result result = isHotelService.saveHotel(sHotel);
-        return result;
-    }
 
-    @GetMapping("/getHotelBySiteId")
-    public PageResult<SHotel> getHotelBySiteID(Integer page,Integer limit,Integer siteId){
-        PageResult<SHotel> pageResult = isHotelService.getHotelBySiteId(page, limit, siteId);
-        return pageResult;
-    }
 
 
 }

@@ -44,14 +44,19 @@ public class RRoutecheck implements Serializable {
     private String checkDesc;
 
     /**
+     * 路线排序分数
+     */
+    private Integer routeScore;
+
+    /**
      * 审核人员id
      */
     private Integer userId;
 
     /**
-     * 路线id
+     * 线路ID
      */
-    private Integer routeId;
+    private String routeId;
 
 
 }

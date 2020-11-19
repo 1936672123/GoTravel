@@ -3,8 +3,6 @@ package com.go.scenery.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.go.other.Picture;
-import com.go.route.mapper.PictureMapper;
 import com.go.scenery.mapper.SSceneryMapper;
 import com.go.scenery.service.ISSceneryService;
 import com.go.site.SScenery;

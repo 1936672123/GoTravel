@@ -45,7 +45,7 @@ public class SHotel implements Serializable {
     private Integer siteId;
 
     /**
-     * 人员id
+     * 添加人员id
      */
     private Integer userId;
 

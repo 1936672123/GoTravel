@@ -37,6 +37,15 @@ public class SSceneryController {
         return result;
     }
 
+
+    //通过 地点id 查询所有的景点
+    @GetMapping("/getSceneryBySiteId")
+    public PageResult<SScenery> getSceneryBySiteId(Integer page,Integer limit,Integer siteId){
+        PageResult<SScenery> pageResult = isSceneryService.getSceneryByPage(page, limit, siteId);
+        return pageResult;
+    }
+
+
     //分页+条件查询所有的景点
     @PostMapping("/searchSceneryByPage")
     public PageResult searchSceneryByPage(Integer page, Integer limit, @RequestBody SScenery sScenery){
@@ -51,11 +60,6 @@ public class SSceneryController {
         return allScenery;
     }
 
-    //通过 地点id 查询所有的景点
-    @GetMapping("/getSceneryBySiteId")
-    public PageResult<SScenery> getSceneryBySiteId(Integer page,Integer limit,Integer siteId){
-        PageResult<SScenery> pageResult = isSceneryService.getSceneryByPage(page, limit, siteId);
-        return pageResult;
-    }
+
 
 }

@@ -13,7 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-11-17
  */
 @RestController
-@RequestMapping("/r-route")
+@RequestMapping("/gt-resource/route")
 public class RRouteController {
+
+    //后台
+
+
+
+
+
+
+    //前台
+
 
 }

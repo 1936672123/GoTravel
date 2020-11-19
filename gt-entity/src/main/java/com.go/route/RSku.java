@@ -49,9 +49,9 @@ public class RSku implements Serializable {
     private Integer memberNum;
 
     /**
-     * 线路主表ID
+     * 线路ID
      */
-    private Integer routeId;
+    private String routeId;
 
 
 }
