@@ -1,7 +1,8 @@
-package com.go.route.mapper;
+package com.go.site.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.go.route.RRouteSite;
+import com.go.site.SSite;
+
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.go.route.RRouteSite;
  * @author jobob
  * @since 2020-11-17
  */
-public interface RRouteSiteMapper extends BaseMapper<RRouteSite> {
+public interface SSiteMapper extends BaseMapper<SSite> {
 
 }
