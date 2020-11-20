@@ -2,8 +2,10 @@ package com.go.route;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +19,8 @@ import java.util.Date;
  * @since 2020-11-18
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class RRoutecheck implements Serializable {
 
@@ -25,13 +29,13 @@ public class RRoutecheck implements Serializable {
     /**
      * 审核路线id
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "check_id", type = IdType.AUTO)
+    private Integer checkId;
 
     /**
      * 路线审核状态
      */
-    private String checkStatus;
+    private Integer checkStatus;// 0-待审核；1-审核通过；2-审核未通过
 
     /**
      * 路线审核时间

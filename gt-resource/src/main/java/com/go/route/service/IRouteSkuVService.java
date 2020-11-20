@@ -1,16 +1,16 @@
 package com.go.route.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.go.site.SSite;
+import com.go.view.RouteSkuV;
 
 /**
  * <p>
- *  服务类
+ * VIEW 服务类
  * </p>
  *
  * @author jobob
- * @since 2020-11-17
+ * @since 2020-11-19
  */
-public interface ISSiteService extends IService<SSite> {
+public interface IRouteSkuVService extends IService<RouteSkuV> {
 
 }

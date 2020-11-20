@@ -1,13 +1,11 @@
-package com.go.route;
+package com.go.view;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.go.route.RSku;
 import com.go.site.SSite;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,24 +13,22 @@ import java.util.List;
 
 /**
  * <p>
- * 
+ * VIEW
  * </p>
  *
  * @author jobob
- * @since 2020-11-17
+ * @since 2020-11-19
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class RRoute implements Serializable {
+@TableName("routeSkuV")
+public class RouteSkuV implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 线路ID
      */
-    @TableId
     private String routeId;
 
     /**
@@ -70,63 +66,71 @@ public class RRoute implements Serializable {
      */
     private Integer saleCount;
 
-
     /**
      * 游览量
      */
     private Integer viewCount;
 
     /**
-     * 温馨提示
-     */
-    private String note;
-
-    /**
-     * 发布路线的旅游社ID
+     * 路线上传者id
      */
     private Integer travelerId;
 
     /**
-     * 产品类型(自由行、跟团游)
-     */
-    private String routeType;
-
-    /**
-     * 路线创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 路线修改时间
-     */
-    private Date updateTime;
-
-    /**
-     * 路线库存数
+     * 路线库存剩余数
      */
     private Integer routeRemain;
 
     /**
-     * 路线套餐信息
+     * 上传路线时间
+     */
+    private Date createTime;
+
+    /**
+     * 修改路线时间
+     */
+    private Date updateTime;
+
+    /**
+     * 审核路线id
+     */
+    private Integer checkId;
+
+    /**
+     * 路线审核状态(0-待审核；1-审核通过；2-审核未通过)
+     */
+    private Integer checkStatus;
+
+    /**
+     * 路线审核时间
+     */
+    private Date checkTime;
+
+    /**
+     * 路线审核描述
+     */
+    private String checkDesc;
+
+    /**
+     * 路线分数（首页展示排名前8）
+     */
+    private Integer routeScore;
+
+    /**
+     * 审核人员id
+     */
+    private Integer userId;
+
+    /**
+     * 路线套餐
      */
     @TableField(exist=false)
     private List<RSku> rskus;
 
-
     /**
-     * 路线审核信息
+     * 路线地点
      */
     @TableField(exist=false)
-    private RRoutecheck rcheck;
-
-
-    /**
-     * 路线地点信息
-     */
-    @TableField(exist=false)
-    private List<SSite> rsites;
-
-
-
+    private List<SSite> ssites;
 
 }
