@@ -28,7 +28,16 @@ public class RRouteController {
     @Autowired
     private IRRouteService irRouteService;
 
-    //-----------------后台管理----------------------------------
+
+    //通过routeId获取路线相关信息（主信息、套餐、标签、地点）
+    @GetMapping("/getRouteByRouteId")
+    public RouteSkuV getRouteByRouteId(String routeId){
+        RouteSkuV routeSkuV = irRouteService.getRouteSkuV(routeId);
+        return routeSkuV;
+    }
+
+
+    //----------------------后台管理----------------------------------
 
     //商家添加路线
     @PostMapping("/saveRoute")
@@ -45,7 +54,6 @@ public class RRouteController {
     //商家修改路线
     @PostMapping("/updateRoute")  // 参数  route{,,, rskus:{} }
     public Result updateRoute(@RequestBody RRoute rRoute){
-
         Result result = irRouteService.updateRoute(rRoute);
         return result;
     }
@@ -68,12 +76,7 @@ public class RRouteController {
         return pageResult;
     }
 
-    //通过routeId查询
-    @GetMapping("/getRouteByRouteId")
-    public RRoute getRouteByRouteId(String routeId){
-        RRoute rRoute = irRouteService.getById(routeId);
-        return rRoute;
-    }
+
 
     //-----------------------------后台审核-------------------------------
 
@@ -85,13 +88,13 @@ public class RRouteController {
     }
 
     //路线审核人员审核路线（修改路线状态和路线的排名分数）
-    @PostMapping("/checkRoute")  // 参数 {string: routeId, int:checkId, int:checkStatus, string:checkDesc}
-    public Result checkRoute(@RequestBody RouteSkuV routeSkuV) {
+    @PostMapping("/checkRoute")  // 参数 {string:routeId ,int:checkId, int:checkStatus, string:checkDesc}
+    public Result checkRoute(@RequestBody RRoutecheck rRoutecheck) {
         //todo: 获取审核人员id
         Integer userId=1;
 
-        routeSkuV.setUserId(userId);
-        Result result = irRouteService.checkRoute(routeSkuV);
+        rRoutecheck.setUserId(userId);
+        Result result = irRouteService.checkRoute(rRoutecheck);
         return result;
     }
 

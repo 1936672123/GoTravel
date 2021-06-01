@@ -1,8 +1,10 @@
 package com.go.view;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.go.route.RSku;
+import com.go.route.RTag;
 import com.go.site.SSite;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,6 +31,7 @@ public class RouteSkuV implements Serializable {
     /**
      * 线路ID
      */
+    @TableId
     private String routeId;
 
     /**
@@ -72,9 +75,19 @@ public class RouteSkuV implements Serializable {
     private Integer viewCount;
 
     /**
+     * 温馨提示
+     */
+    private String note;
+
+    /**
      * 路线上传者id
      */
     private Integer travelerId;
+
+    /**
+     * 路线类型
+     */
+    private String routeType;
 
     /**
      * 路线库存剩余数
@@ -133,4 +146,9 @@ public class RouteSkuV implements Serializable {
     @TableField(exist=false)
     private List<SSite> ssites;
 
+    /**
+     * 路线标签（度假酒店，餐饮美食）
+     */
+    @TableField(exist=false)
+    private List<RTag> rTags;
 }

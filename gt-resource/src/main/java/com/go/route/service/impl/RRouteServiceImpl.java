@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.go.dto.RouteDTO;
 import com.go.food.mapper.SFoodMapper;
 import com.go.hotel.mapper.SHotelMapper;
 import com.go.route.*;
@@ -16,13 +15,13 @@ import com.go.site.SSite;
 import com.go.view.RouteSkuV;
 import com.go.vo.PageResult;
 import com.go.vo.Result;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,8 +41,15 @@ public class RRouteServiceImpl extends ServiceImpl<RRouteMapper, RRoute> impleme
     private RRouteMapper rRouteMapper;
     @Autowired
     private RSkuMapper rSkuMapper;
+
     @Autowired
     private RRoutecheckMapper rRoutecheckMapper;
+
+    @Autowired
+    private RouteSkuVMapper routeSkuVMapper;
+
+
+
     @Autowired
     private RRouteTagMapper rRouteTagMapper;
     @Autowired
@@ -55,7 +61,7 @@ public class RRouteServiceImpl extends ServiceImpl<RRouteMapper, RRoute> impleme
     private SFoodMapper sFoodMapper;
 
     @Autowired
-    private RouteSkuVMapper routeSkuVMapper;
+    private RocketMQTemplate rocketMQTemplate;
 
 
     //----------------------------后台管理-----------------------------------
@@ -269,13 +275,16 @@ public class RRouteServiceImpl extends ServiceImpl<RRouteMapper, RRoute> impleme
             queryWrapper.eq("check_status",routeSkuV.getCheckStatus());
         }
         Page<RouteSkuV> page1 = routeSkuVMapper.selectPage(page, queryWrapper);
-        //对路线进行处理，将其具体套餐信息添加进去
+        //对路线进行处理，将其套餐信息、路线信息、地点添加进去
         List<RouteSkuV> routeSkuVS = page1.getRecords();
         for (RouteSkuV route : routeSkuVS) {
-            QueryWrapper<RSku> qw = new QueryWrapper<>();
-            qw.eq("route_id",route.getRouteId());
-            List<RSku> rSkus = rSkuMapper.selectList(qw);
-            route.setRskus(rSkus);
+            String routeId=route.getRouteId();
+            List<RSku> skuList = rRouteMapper.getRSkuByRouteId(routeId);
+            List<RTag> tagList = rRouteMapper.getTagsByRouteId(routeId);
+            List<SSite> siteList = rRouteMapper.getSitesByRouteId(routeId);
+            route.setRskus(skuList);
+            route.setRTags(tagList);
+            route.setSsites(siteList);
         }
         return new PageResult<>(routeSkuVS,page1.getTotal());
     }
@@ -301,37 +310,61 @@ public class RRouteServiceImpl extends ServiceImpl<RRouteMapper, RRoute> impleme
             qw.eq("check_status",routeSkuV.getCheckStatus());
         }
         Page<RouteSkuV> page1 = routeSkuVMapper.selectPage(page, qw);
-        return new PageResult<>(page1.getRecords(),page1.getTotal());
+        //对路线进行处理，将其套餐信息、路线信息、地点添加进去
+        List<RouteSkuV> routes = page1.getRecords();
+        for (RouteSkuV route : routes) {
+            String routeId=route.getRouteId();
+            List<RSku> skuList = rRouteMapper.getRSkuByRouteId(routeId);
+            List<RTag> tagList = rRouteMapper.getTagsByRouteId(routeId);
+            List<SSite> siteList = rRouteMapper.getSitesByRouteId(routeId);
+            route.setRskus(skuList);
+            route.setRTags(tagList);
+            route.setSsites(siteList);
+        }
+        return new PageResult<RouteSkuV>(routes,page1.getTotal());
     }
+
 
     //路线审核人员审核
     @Override
-    public Result checkRoute(RouteSkuV routeSkuV) {
-        if(StringUtils.isEmpty(routeSkuV.getCheckDesc())){
-            routeSkuV.setCheckDesc(null);
+    public Result checkRoute(RRoutecheck rRoutecheck) {
+        if(StringUtils.isEmpty(rRoutecheck.getCheckDesc())){
+            rRoutecheck.setCheckDesc(null);
         }
-        RRoutecheck rRoutecheck = new RRoutecheck();
         rRoutecheck.setCheckTime(new Date());
-        rRoutecheck.setCheckId(routeSkuV.getCheckId());
-        rRoutecheck.setCheckStatus(routeSkuV.getCheckStatus());
-        rRoutecheck.setCheckDesc(routeSkuV.getCheckDesc());
-        rRoutecheck.setUserId(routeSkuV.getUserId());
+        RRoutecheck check = rRoutecheckMapper.selectById(rRoutecheck.getCheckId());
         int i = rRoutecheckMapper.updateById(rRoutecheck);
-        //todo:判断是否将路线审核为审核成功，成功就同步索引库
-        if((0!=i)&&(routeSkuV.getCheckStatus()==1)){
-
+        System.out.println("i="+i);
+        //todo: 使用rocketMQ发送消息同步索引库
+        if((0!=i)&&(rRoutecheck.getCheckStatus()==1)&&(check.getCheckStatus()!=1)){
+            System.out.println("同步索引库");
+            //获取同步索引库的数据
+            RouteSkuV routeSkuV = getRouteSkuV(rRoutecheck.getRouteId());
+            //同步索引库
+            rocketMQTemplate.syncSend("gt-resource-route:addRoute",routeSkuV);
         }
         return new Result(true,"审核-修改路线状态成功");
     }
 
+    //审核修改路线分数
     @Override
     public Result updateRouteScore(RRoutecheck rRoutecheck) {
         int i = rRoutecheckMapper.updateById(rRoutecheck);
-        return new Result(i==0?false:true,i==0?"审核-修改路线分数失败":"审核-修改路线分数成功");
+        return new Result(true,"审核-修改路线分数成功");
     }
 
 
-    //-----------------------------前端显示------------------------------------------
+    //通过routeId获取路线相关信息（主信息、套餐、标签、地点）
+    @Override
+    public RouteSkuV getRouteSkuV(String routeId){
+        RouteSkuV routeSkuV = routeSkuVMapper.selectById(routeId);
+        routeSkuV.setRskus(rRouteMapper.getRSkuByRouteId(routeId));
+        routeSkuV.setRTags(rRouteMapper.getTagsByRouteId(routeId));
+        routeSkuV.setSsites(rRouteMapper.getSitesByRouteId(routeId));
+        return  routeSkuV;
+    }
+
+
 
 
 }

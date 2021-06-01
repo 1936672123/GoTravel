@@ -34,7 +34,6 @@
         </dependency>
 
 
-
         <!--  nacos注册中心  -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -48,7 +47,13 @@
         </dependency>
 
 
-
+        <!--rocketMQ-->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <!--2.1.0对应的mq是4.6.x-->
+            <version>2.1.0</version>
+        </dependency>
 
 
         <!-- elasticSearch起步依赖 -->
@@ -58,43 +63,11 @@
         </dependency>
 
 
-
-
-
-
-        <!--log4j依赖-->
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>com.go</groupId>
+            <artifactId>gt-entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-
-
-        <!--test起步依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-
 
 
 

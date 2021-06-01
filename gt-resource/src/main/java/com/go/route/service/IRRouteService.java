@@ -18,6 +18,8 @@ import com.go.vo.Result;
  */
 public interface IRRouteService extends IService<RRoute> {
 
+    RouteSkuV getRouteSkuV(String routeId);
+
     //--------------------后台管理--------------------
 
     //添加路线
@@ -35,7 +37,7 @@ public interface IRRouteService extends IService<RRoute> {
     //路线审核人员查询路线
     PageResult<RouteSkuV> getRoutesWithCheck(Integer current,Integer limit,RouteSkuV routeSkuV);
     //审核路线
-    Result checkRoute(RouteSkuV routeSkuV);
+    Result checkRoute(RRoutecheck rRoutecheck);
 
     //路线审核人员修改路线分数
     Result updateRouteScore(RRoutecheck rRoutecheck);
